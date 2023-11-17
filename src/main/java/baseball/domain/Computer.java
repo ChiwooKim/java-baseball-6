@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ public class Computer {
     private static final int START_RANGE_NUMBER = 1;
     private static final int END_RANGE_NUMBER = 9;
 
-    public static List<Integer> generateRandomNumbers() {
+    public List<Integer> generateRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < NUMBERS_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(START_RANGE_NUMBER, END_RANGE_NUMBER);
