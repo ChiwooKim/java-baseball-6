@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,9 +12,14 @@ public class InputView {
 
     public static List<Integer> readNumbers() {
         String input = input();
-        return Stream.of(input.split(DELIMITER))
+        Validator.validateNumbersPattern(input);
+
+        List<Integer> numbers = Stream.of(input.split(DELIMITER))
                 .map(Integer::parseInt)
+                .distinct()
                 .collect(Collectors.toList());
+        Validator.validateDuplication(numbers);
+        return numbers;
     }
 
     private static String input() {
