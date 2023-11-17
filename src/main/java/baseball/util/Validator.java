@@ -14,7 +14,7 @@ public class Validator {
         }
     }
 
-    private static void validateNumbersPattern(String input) {
+    public static void validateNumbersPattern(String input) {
         if (!REGEX_NUMBERS.matcher(input).matches()) {
             throw new IllegalArgumentException("1부터 9까지의 숫자 중 3가지 숫자를 입력해주세요.");
         }
