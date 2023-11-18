@@ -4,28 +4,14 @@ import java.util.List;
 
 public class Referee {
 
-    private int ball;
-    private int strike;
-
-    public void checkResult(List<Integer> userNumbers, List<Integer> computerNumbers) {
-        List<Integer> result = countBallAndStrike(userNumbers, computerNumbers);
-        this.ball = result.get(0);
-        this.strike = result.get(1);
-    }
-
-    private List<Integer> countBallAndStrike(List<Integer> userNumbers, List<Integer> computerNumbers) {
-        int ball = 0;
-        int strike = 0;
-        
+    public Result judge(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        Result result = new Result();
         for (int i = 0; i < userNumbers.size(); i++) {
-            if (userNumbers.get(i).equals(computerNumbers.get(i))) {
-                strike++;
+            if (result.isStrike(userNumbers, computerNumbers, i)) {
                 continue;
             }
-            if (computerNumbers.contains(userNumbers.get(i))) {
-                ball++;
-            }
+            result.countBall(userNumbers, computerNumbers, i);
         }
-        return List.of(ball, strike);
+        return result;
     }
 }
