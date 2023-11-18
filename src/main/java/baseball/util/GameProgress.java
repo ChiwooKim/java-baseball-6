@@ -11,4 +11,11 @@ public enum GameProgress {
     public static boolean isQuit(GameProgress gameProgress) {
         return gameProgress == QUIT;
     }
+
+    public static GameProgress judgeEnd(int number) {
+        if (number == 1) {
+            return START;
+        }
+        return QUIT;
+    }
 }
