@@ -22,6 +22,12 @@ public class InputView {
         return numbers;
     }
 
+    public static int readNumber() {
+        String input = input();
+        Validator.validateNumberPattern(input);
+        return Integer.parseInt(input);
+    }
+
     private static String input() {
         return Console.readLine();
     }
