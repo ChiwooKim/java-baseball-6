@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.util.ResultMessage;
 import java.util.List;
 
 public class Result {
@@ -30,5 +31,9 @@ public class Result {
 
     public boolean hasBall() {
         return ball > DEFAULT_NUMBER;
+    }
+
+    public String announceResult() {
+        return ResultMessage.getResultMessage(ball, strike);
     }
 }
