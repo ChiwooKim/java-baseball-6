@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.Computer;
 import baseball.domain.Referee;
+import baseball.domain.Result;
 import baseball.util.GameProgress;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -33,7 +34,13 @@ public class GameController {
     }
 
     private void playUntilThreeStrikes(List<Integer> computerNumbers) {
-        List<Integer> userNumbers = InputView.readNumbers();
-        referee.checkResult(userNumbers, computerNumbers);
+        while (!GameProgress.isRetry(gameProgress)) {
+            List<Integer> userNumbers = InputView.readNumbers();
+            Result result = referee.judge(userNumbers, computerNumbers);
+            OutputView.printResult(result.announceResult());
+            if (result.hasBall()) {
+                gameProgress = GameProgress.RETRY;
+            }
+        }
     }
 }
