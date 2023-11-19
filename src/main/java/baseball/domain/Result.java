@@ -34,13 +34,13 @@ public class Result {
     }
 
     public String announceResult() {
-        if (ball == 0 && strike == 0) {
+        if (ball == DEFAULT_NUMBER && strike == DEFAULT_NUMBER) {
             return Message.NOTHING.getMessage();
         }
-        if (ball == 0) {
+        if (ball == DEFAULT_NUMBER) {
             return String.format(Message.STRIKE.getMessage(), strike);
         }
-        if (strike == 0) {
+        if (strike == DEFAULT_NUMBER) {
             return String.format(Message.BALL.getMessage(), ball);
         }
         return String.format(Message.BALL_AND_STRIKE.getMessage(), ball, strike);
