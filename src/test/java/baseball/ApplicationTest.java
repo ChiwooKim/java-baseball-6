@@ -35,6 +35,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("122"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("중복된 숫자가 존재합니다. 다시 입력해주세요.")
         );
     }
 
@@ -44,6 +45,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("one"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("1부터 9까지의 숫자 중 3가지 숫자를 입력해주세요.")
         );
     }
 
