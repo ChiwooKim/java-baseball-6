@@ -27,18 +27,20 @@ public class GameController {
     private void playOrEnd() {
         OutputView.printStart();
         while (!GameProgress.isQuit(gameProgress)) {
-            OutputView.printInputNumbers();
             List<Integer> computerNumbers = computer.generateRandomNumbers();
-
             playUntilThreeStrikes(computerNumbers);
-
-            OutputView.printRetryOrEnd();
-            gameProgress = GameProgress.judgeEnd(InputView.readNumber());
+            selectRetry();
         }
+    }
+
+    private void selectRetry() {
+        OutputView.printRetryOrEnd();
+        gameProgress = GameProgress.judgeEnd(InputView.readNumber());
     }
 
     private void playUntilThreeStrikes(List<Integer> computerNumbers) {
         while (!GameProgress.isQuit(gameProgress)) {
+            OutputView.printInputNumbers();
             Result result = referee.judge(InputView.readNumbers(), computerNumbers);
             OutputView.printResult(result.announceResult());
             judgeRetry(result);
